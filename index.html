@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IronBack Clothing</title>
+
+<style>
+:root {
+  --accent: #FF6B35;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* --- STICKY BAR --- */
+.sticky-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #FF6B35;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  z-index: 999;
+  font-weight: bold;
+}
+
+/* --- GENERAL --- */
+.section {
+  padding: 100px 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all .8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 52px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.bg-light {
+  background: #1a1a1a;
+}
+
+/* --- BUTTON --- */
+.btn {
+  background: var(--accent);
+  padding: 14px 28px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff8555;
+  transform: scale(1.05);
+}
+
+/* --- INPUT --- */
+.input {
+  padding: 12px;
+  width: 70%;
+  max-width: 300px;
+}
+
+/* --- HERO --- */
+.hero-video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* --- CARDS --- */
+.card {
+  background: #222;
+  padding: 25px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* --- COUNTDOWN --- */
+.countdown {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.center {
+  text-align: center;
+}
+
+/* --- MOBILE --- */
+@media(max-width:768px){
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sticky-bar">
+🔥 Launching Soon — Early Pricing Ends Fast
+</div>
+
+<!-- HERO -->
+<section class="section visible">
+<div class="container grid-2">
+<div>
+<h1>Work Shirts Fail at the Shoulder.<br>We Built One That Doesn’t.</h1>
+
+<p>The first work tee engineered for real jobsite wear.</p>
+
+<input class="input" placeholder="Enter email">
+<button class="btn">Get Early Access</button>
+
+<div class="countdown" id="countdown"></div>
+
+</div>
+
+<div>
+<!-- Replace with real video -->
+<video class="hero-video" autoplay muted loop>
+  <source src="YOUR_VIDEO.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section bg-light">
+<div class="container center">
+<h2>You already know this problem.</h2>
+
+<p>Shirts don’t fail at the chest.<br>
+They don’t fail at the back.<br>
+<strong>They fail right at the shoulder.</strong></p>
+
+<p>My 23-year-old son delivers doors.<br>
+Every couple of weeks… another shirt destroyed.</p>
+</div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section">
+<div class="container grid-2">
+
+<div>
+<h2>So we built something better.</h2>
+
+<p>IronBack is engineered for real work with reinforced shoulders.</p>
+
+<ul>
+<li>Dyneema reinforced fabric</li>
+<li>Built for friction + load</li>
+<li>Lasts longer than standard tees</li>
+</ul>
+</div>
+
+<div>
+<img class="hero-video" src="YOUR_PRODUCT.jpg">
+</div>
+
+</div>
+</section>
+
+<!-- PROOF -->
+<section class="section bg-light">
+<div class="container">
+<h2 class="center">We tested it the way you work.</h2>
+
+<div class="grid-3">
+<div class="card">Dragging across concrete</div>
+<div class="card">Carrying heavy doors</div>
+<div class="card">Side-by-side tear test</div>
+</div>
+
+<p class="center">Where regular shirts fail — <strong>IronBack holds up.</strong></p>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section center">
+<div class="container">
+<h2>Work Shirts Shouldn’t Fail This Fast.</h2>
+
+<input class="input" placeholder="Enter email">
+<button class="btn">Get Early Access</button>
+
+<p>Help us build workwear that actually works.</p>
+</div>
+</section>
+
+<script>
+// Scroll animation
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+      sec.classList.add('visible');
+    }
+  });
+});
+
+// Countdown (set your launch date)
+const launchDate = new Date("2026-09-01").getTime();
+
+setInterval(function(){
+  const now = new Date().getTime();
+  const diff = launchDate - now;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("countdown").innerHTML =
+  "Launching in " + days + " days";
+},1000);
+</script>
+
+</body>
+</html>
